@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Q 5s</title>
+	<style type="text/css">
+		#vert{
+			width: 50%;
+			margin: 0px auto;
+			margin-top: 10%;
+		}
+		#table {
+			margin:0px auto;
+		}
+		#output{
+			height: -webkit-fill-available;
+		}
+	</style>
+	<script type="text/javascript">
+		var emp=[];
+		var count=0;
+		function create(){
+			var name=document.getElementById("name").value;
+			var age=document.getElementById("age").value;
+			var sal=document.getElementById("sal").value;
+			var dob=document.getElementById("dob").value;
+			if (typeof name != "undefined" && typeof age != "undefined" && typeof sal != "undefined" && typeof dob != "undefined") {
+				emp[count]={"name":name,"age":age,"salary":sal,"dob":dob}
+			
+				var temp="Name:"+name+" Age:"+age+" Salary:"+sal+" DOB:"+dob;
+				console.log(emp[count]);
+				document.getElementById("output").innerHTML=temp;
+				document.getElementById("name").value="";
+				document.getElementById("age").value="";
+				document.getElementById("sal").value="";
+				document.getElementById("dob").value="";
+				count++;
+			}
+			else{
+				document.getElementById("output").innerHTML="Enter all data";
+				console.log("Enter all data");
+			}
+					
+		}
+
+
+		function filterOnSal(){
+			var no=emp.length-1;
+			var temp="";
+			
+			for(var i=0;i<=no;i++){
+				if(emp[i].salary >= 5000){
+					temp=temp+"\n Name:"+emp[i].name+" Age:"+emp[i].age+" Salary:"+emp[i].salary+" DOB:"+emp[i].dob;
+				}
+			}
+					console.log(temp);
+
+			document.getElementById("output").innerHTML=temp;
+		}
+
+
+		function groupByAge(){
+			var groupByAge={};
+			var maxage=emp[0].age;
+			var minage=maxage;
+			for(i=1;i<emp.length;i++){
+				if(emp[i].age>maxage){
+					maxage=emp[i].age;
+				}
+				if(emp[i].age<minage){
+					minage=emp[i].age;
+				}
+			}
+			var temp=[];
+			var k;
+			var flag=0;
+			for(i=minage;i<=maxage;i++){
+				k=0;
+				temp=[];
+				for(j=0;j<emp.length;j++){
+					if (i==emp[j].age) {
+						temp[k]=emp[j];
+						k++;
+						flag=1;
+					}
+					
+				}
+				if (flag==1) {
+						
+				groupByAge[i]=temp;
+						flag=0;
+					}
+			}
+
+				console.log(groupByAge);
+
+		}
+
+
+		function increment(){
+			var no=emp.length;
+			var temp="";
+			for(i=0;i<no;i++){
+				if(emp[i].salary<1000 && emp[i].age>20){
+					emp[i].salary*=5;
+					temp=temp+"\n Name:"+emp[i].name+" Age:"+emp[i].age+" Salary:"+emp[i].salary+" DOB:"+emp[i].dob;
+				}
+			}
+					console.log(temp);
+					document.getElementById("output").innerHTML=temp;
+		}
+	</script>
+</head>
+<body>
+	<div id="vert"><form>
+		<h2>Query fields</h2>
+		<table id="table">
+			<tr>
+				<td>
+					<span>Name</span>
+				</td>
+				<td>
+					<input type="text" name="name" id="name" placeholder="Enter name" required>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>Age</span>
+				</td>
+				<td>
+					<input type="number" name="age" id="age" placeholder="Enter age" required>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>Salery</span>
+				</td>
+				<td>
+					<input type="number" name="salery" id="sal" placeholder="Enter salary" required>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>Date of Birth</span>
+				</td>
+				<td>
+					<input type="text" name="dob" id="dob" placeholder="Enter DOB" required>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" onclick="create()" value="Create Object" id="btn">
+				</td>
+				<td>
+					<input type="button" onclick="filterOnSal()" value="filter On Salary" id="btn">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" onclick="groupByAge()" value="Group By Age" id="btn">
+				</td>
+				<td>
+					<input type="button" onclick="increment()" value="Fatch & increment" id="btn">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<p id="output"></p>
+				</td>
+			</tr>
+		</table></form>
+		
+	</div>
+</body>
+</html>

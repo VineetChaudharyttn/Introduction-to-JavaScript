@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Check Palindrome</title>
+	<style type="text/css">
+		#vert{
+			width: 30%;
+			margin: 0px auto;
+			margin-top: 13%;
+		}
+	</style>
+	<script type="text/javascript">
+		function checkString(){
+			var stri=document.getElementById("str").value;
+			var obj=document.getElementById("result");
+			if(stri.length>=2){
+				end=stri.length-1;
+				for(i=0;i<end;i++,end--){
+					flag=0;
+					if(stri[i]!=stri[end]){
+						flag=1;
+					}
+				}
+				if(flag==1){
+					obj.innerHTML="Not Palindrome";
+				}
+				else{
+					obj.innerHTML="Palindrome"
+				}
+					
+			}
+			else{
+				obj.innerHTML="Not Palindrome"
+			}
+				
+		}
+	</script>
+</head>
+<body>
+	<div id="vert">
+			<input type="textbox" name="str" id="str">
+			<input type="submit" onclick="checkString()">
+		<span id="result"></span>
+	</div>
+</body>
+</html>

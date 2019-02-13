@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Check Palindrome</title>
+	<style type="text/css">
+		#vert{
+			width: 30%;
+			margin: 0px auto;
+			margin-top: 13%;
+		}
+	</style>
+	<script type="text/javascript">
+		function calculate(){
+			var v=document.getElementById("val").value;
+			var area=3.14*Math.pow(v,2);
+			document.getElementById("result").innerHTML="<br/> Area="+area;			
+		}
+	</script>
+</head>
+<body>
+	<div id="vert">
+			<input type="textbox" name="str" id="val" placeholder="Enter Radius">
+			<input type="submit" onclick="calculate()">
+		<span id="result"></span>
+	</div>
+</body>
+</html>

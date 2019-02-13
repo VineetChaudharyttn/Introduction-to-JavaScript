@@ -1,0 +1,30 @@
+<!DOCTYPE HTML5>
+<html>
+<head>
+	<title>Java script</title>
+	<script type="text/javascript">
+		function simInter(){
+			var amt=prompt("Enter the amount:","");
+			var rate=prompt("Enter the Interest rate:","");
+			var time=prompt("Enter the time:","");
+			var sim= (amt*rate*time)/100;
+			r=document.getElementById("span");
+			r.innerHTML= sim;
+		}
+	</script>
+	<style type="text/css">
+		#vert{
+			width: 20%;
+			margin: 0px auto;
+			margin-top: 13%;
+		}
+	</style>
+</head>
+<body onload="simInter()">
+	<div id="vert">
+		<span>Result=</span>
+		<span id="span">result</span>
+	</div>
+	
+</body>
+</html>
